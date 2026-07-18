@@ -18,16 +18,17 @@ body {
   background-color: #1a1a1a;
   margin: 0;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100dvh; /* 아이폰 Safari 등 모바일 브라우저의 동적 툴바 영역을 고려한 높이 설정 */
+  position: relative;
   overflow: hidden;
 }
 
 #presentation-area {
   width: 1280px;
   height: 720px;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   transform-origin: center center;
 }
 
@@ -456,8 +457,11 @@ body {
 
     function resizePresentation() {
         const area = document.getElementById('presentation-area');
-        const scale = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
-        area.style.transform = `scale(${scale})`;
+        // 모바일에서도 PC처럼 상하좌우 최소 5%의 여백이 유지되도록 크기 비율(0.95) 조정
+        const scale = Math.min((window.innerWidth * 0.95) / 1280, (window.innerHeight * 0.95) / 720);
+        
+        // 브라우저 툴바 유무와 상관없이 항상 화면의 완벽한 정중앙에 정렬되도록 translate 적용
+        area.style.transform = `translate(-50%, -50%) scale(${scale})`;
     }
 
     window.addEventListener('resize', resizePresentation);
