@@ -6,15 +6,24 @@
     <title>애니메이션 '다윗' 단체 관람</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Noto+Serif+KR:wght@600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
 * { box-sizing: border-box; }
+
+:root {
+  --font-title: 'Noto Serif KR', serif;
+  --font-heading: 'Noto Sans KR', sans-serif;
+  --font-subheading: 'Gowun Dodum', sans-serif;
+  --font-body: 'Noto Sans KR', sans-serif;
+  --font-subtext: 'Nanum Gothic', sans-serif;
+}
 
 p { margin: 0; margin-bottom: 15px; }
 
 body {
   background-color: #1a1a1a;
+  font-family: var(--font-body);
   margin: 0;
   height: 100vh;
   height: 100dvh; /* 모바일 브라우저 주소창 고려 */
@@ -38,7 +47,7 @@ body {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  font-family: 'Pretendard', sans-serif;
+  font-family: var(--font-body);
   height: 720px;
   justify-content: center;
   overflow: hidden;
@@ -84,17 +93,21 @@ body {
 
 .slide-container p, .slide-container li, .slide-container .subtitle {
   color: #334155;
-  font-family: 'Pretendard', sans-serif;
+  font-family: var(--font-body);
 }
 
-.slide-container h1 { font-size: 80px; color: #ffffff; }
+.slide-container h1 { color: #ffffff; font-family: var(--font-title); font-size: 80px; }
 .slide-container h1 .highlight { color: #fbbf24; }
-.slide-container .slide-title { font-size: 44px; margin-bottom: 40px; text-align: left; width: 100%; }
-.slide-container h3 { font-size: 32px; margin-bottom: 15px; }
+.slide-container .slide-title { font-family: var(--font-heading); font-size: 44px; margin-bottom: 40px; text-align: left; width: 100%; }
+.slide-container h3 { font-family: var(--font-subheading); font-size: 32px; margin-bottom: 15px; }
 
 .slide-container p, .slide-container li, .slide-container .subtitle, .slide-container .bleed-text-side p {
   font-size: 22px;
   line-height: 1.6;
+}
+.slide-container .subtitle,
+.slide-container h3 + p {
+  font-family: var(--font-subtext);
 }
 .slide-container .subtitle { font-weight: 400; margin: 20px auto; color: #e0e7ff; font-size: 28px; }
 
@@ -235,6 +248,79 @@ body {
   width: 100%;
   height: 100%;
 }
+
+/* Mobile: keep the slide experience while allowing each slide to grow and scroll. */
+@media (max-width: 900px) {
+  body {
+    height: 100dvh;
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  #presentation-area {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transform: none !important;
+  }
+
+  .slide-container {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    padding: 36px 20px 64px;
+    border-radius: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    overscroll-behavior-y: contain;
+  }
+
+  .slide-container h1 { font-size: clamp(42px, 12vw, 58px); }
+  .slide-container .subtitle { font-size: clamp(20px, 5.8vw, 25px); }
+  .slide-container .slide-title { font-size: clamp(30px, 8vw, 38px); margin-bottom: 28px; }
+  .slide-container h3 { font-size: 25px; }
+  .slide-container p, .slide-container li, .slide-container .subtitle, .slide-container .bleed-text-side p {
+    font-size: 18px;
+    line-height: 1.65;
+  }
+
+  .slide-container .content-area {
+    flex-grow: 0;
+    justify-content: flex-start;
+  }
+
+  .slide-container.bleed-image-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+  .slide-container.bleed-image-layout > .content-container { padding: 36px 20px 24px; width: 100%; }
+  .slide-container.bleed-image-layout > .image-container { height: 220px; flex: 0 0 220px; }
+  .slide-container.bleed-image-layout img.bleed-image-side { height: 220px; }
+
+  .event-info-box { margin-bottom: 16px; padding: 20px; }
+  .event-info-box h3 { font-size: 22px; }
+  .event-info-box p { font-size: 21px; }
+
+  .bullet-list { align-self: auto; }
+  .bullet-list li { font-size: 18px; margin-bottom: 14px; padding: 20px 18px 20px 62px; }
+  .bullet-list .number-badge { width: 32px; height: 32px; left: 16px; top: 20px; font-size: 18px; }
+
+  .tiled-content { flex-direction: column; gap: 18px; }
+  .tile { flex: 0 0 auto; padding: 28px 20px; }
+  .tile .icon { font-size: 48px; margin-bottom: 16px; }
+  .tile h3 { font-size: 24px; margin-bottom: 12px; }
+  .tile p { padding: 0; }
+
+  .image-tile { width: 100%; }
+  .image-tile .image-wrapper { height: min(70vw, 280px); margin-bottom: 14px; padding: 14px; }
+
+  #nav-hint { bottom: 12px; padding: 0 16px; font-size: 12px; }
+}
     </style>
 </head>
 <body>
@@ -276,13 +362,13 @@ body {
 </div>
 
 <div class="slide-container" id="slide3">
-    <h2 class="slide-title">티켓 배부 및 관람 협조 안내</h2>
+    <h2 class="slide-title">티켓 배부 및 관람 안내</h2>
     <div class="content-area">
         <div class="bullet-list">
             <ul>
                 <li><div class="number-badge">1</div><strong>여유 있는 출발:</strong> 극장이 &lt;롯데시네마 별내&gt;로 변경되었으므로 여유있게 출발해주시기 부탁드립니다.</li>
                 <li><div class="number-badge">2</div><strong>티켓 수령:</strong> 영화관 로비에서 1시 55분까지 티켓 배부를 합니다. 이후에는 매표소(매점)에서 찾아가실 수 있도록 직원분께 맡겨놓겠습니다. <span style="color:#0ea5e9; font-weight:700;">"서울침례교회, 성함을 말씀해주세요."</span></li>
-                <li><div class="number-badge">3</div><strong>지정 좌석 착석:</strong> 일반 관람객도 함께 관람하는 상영입니다. 자율 배석이 아닌 지정된 티켓 좌석에 꼭 앉아주세요. <span style="font-size:20px; color:#64748b; font-weight:normal;">(가족 및 동행분들은 같이 앉으실 수 있도록 했습니다. 🙂)</span></li>
+                <li><div class="number-badge">3</div><strong>지정 좌석 착석:</strong> 일반 관람객도 함께 관람하는 상영입니다. 자율 배석이 아닌 지정된 티켓 좌석에 꼭 앉아주세요. <span style="color:#64748b;">(가족 및 동행분들은 같이 앉으실 수 있도록 했습니다. 🙂)</span></li>
                 <li><div class="number-badge">4</div><strong>정시 입장:</strong> 단체관람인만큼 혹시 있을지 모르는 소수의 일반 관람객을 배려하여 상영 시작전 여유롭게 입장을 마쳐주시기 바랍니다.</li>
             </ul>
         </div>
@@ -338,10 +424,6 @@ body {
                 <h3 style="font-size:24px;"><a href="https://kko.to/lpnfsOnN6g" target="_blank" style="color: #3A1D1D; text-decoration: none;"><i class="fa-solid fa-comment" style="color: #FEE500;"></i> 카카오</a></h3>
             </div>
         </div>
-        
-        <div style="margin-top: 40px; width: 100%; text-align: center;">
-            <p style="color: #ef4444; font-weight: 600; font-size: 20px;">(마우스 커서나 그림자가 QR 코드를 가리지 않도록 주의해주세요.)</p>
-        </div>
     </div>
 </div>
 
@@ -359,6 +441,8 @@ body {
     // 모바일 스와이프를 위한 변수
     let touchStartX = 0;
     let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
     let isSwiping = false;
 
     function updateSlides() {
@@ -404,23 +488,31 @@ body {
     // 모바일 터치 시작 (스와이프 인식용)
     window.addEventListener('touchstart', e => {
         touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
         isSwiping = false; // 터치 시작시 스와이프 상태 초기화
     }, {passive: true});
 
     // 모바일 터치 종료 (스와이프 인식용)
     window.addEventListener('touchend', e => {
         touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
         handleSwipe();
     }, {passive: true});
 
     // 스와이프 거리 계산 함수
     function handleSwipe() {
         const swipeThreshold = 40; // 스와이프 인식 최소 픽셀 거리
-        if (touchStartX - touchEndX > swipeThreshold) {
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+
+        // 세로 이동은 슬라이드 내부 스크롤에 맡기고, 가로 이동만 페이지 전환으로 처리합니다.
+        if (Math.abs(deltaX) <= Math.abs(deltaY)) return;
+
+        if (-deltaX > swipeThreshold) {
             // 왼쪽으로 밀었을 때 (다음 슬라이드)
             isSwiping = true;
             nextSlide();
-        } else if (touchEndX - touchStartX > swipeThreshold) {
+        } else if (deltaX > swipeThreshold) {
             // 오른쪽으로 밀었을 때 (이전 슬라이드)
             isSwiping = true;
             prevSlide();
@@ -448,6 +540,10 @@ body {
 
     function resizePresentation() {
         const area = document.getElementById('presentation-area');
+        if (window.matchMedia('(max-width: 900px)').matches) {
+            area.style.transform = 'none';
+            return;
+        }
         // 화면 여백을 보장하기 위해 95% 비율 사용 (높이는 안내문구를 위해 여백 확보)
         const scale = Math.min((window.innerWidth * 0.95) / 1280, (window.innerHeight - 80) / 720);
         // 중앙 정렬을 위한 translate 속성 추가
