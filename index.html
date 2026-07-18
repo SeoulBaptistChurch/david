@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-/* 1. THE SETUP */
 * { box-sizing: border-box; }
 
 p { margin: 0; margin-bottom: 15px; }
@@ -18,7 +17,7 @@ body {
   background-color: #1a1a1a;
   margin: 0;
   height: 100vh;
-  height: 100dvh; /* 아이폰 Safari 등 모바일 브라우저의 동적 툴바 영역을 고려한 높이 설정 */
+  height: 100dvh; /* 모바일 브라우저 주소창 고려 */
   position: relative;
   overflow: hidden;
 }
@@ -26,7 +25,7 @@ body {
 #presentation-area {
   width: 1280px;
   height: 720px;
-  position: absolute;
+  position: absolute; /* 모든 브라우저에서 절대적 중앙 위치 보장 */
   left: 50%;
   top: 50%;
   transform-origin: center center;
@@ -76,7 +75,6 @@ body {
   z-index: 1;
 }
 
-/* 2. CONSISTENT TYPOGRAPHY */
 .slide-container h1, .slide-container h2, .slide-container h3 {
   color: #1e3a8a;
   font-weight: 800;
@@ -109,36 +107,11 @@ body {
   width: 100%;
 }
 
-/* 3. LAYOUT DEFINITIONS */
 .title-layout { text-align: center; }
 
 /* Custom Title Slide Background */
 #slide1 {
     background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
-}
-
-.two-column {
-  align-items: flex-start;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  width: 100%;
-}
-
-.image-wrapper {
-  border-radius: 12px;
-  height: 350px;
-  max-width: 100%;
-  overflow: hidden;
-  width: 100%;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.image-wrapper img {
-  height: 100%;
-  max-width: 100%;
-  object-fit: cover;
-  width: 100%;
 }
 
 /* Bleed Image Layout */
@@ -182,7 +155,6 @@ body {
   color: #0f172a;
 }
 
-/* Styled Bullet Points Layout */
 .bullet-list { max-width: 1100px; width: 100%; align-self: flex-start; }
 .bullet-list ul { list-style: none; margin: 0; padding: 0; }
 .bullet-list li {
@@ -211,7 +183,6 @@ body {
 }
 .bullet-list li strong { color: #1e3a8a; font-weight: 800; }
 
-/* Tiled Text With Icons Layout */
 .tiled-content {
   align-items: stretch;
   display: flex;
@@ -264,39 +235,12 @@ body {
   width: 100%;
   height: 100%;
 }
-.map-button {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: 700;
-  color: white;
-  margin-top: 15px;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-/* Full Background Image */
-.full-bg-image {
-  background-position: center;
-  background-size: cover;
-}
-.full-bg-image .content-overlay {
-  text-align: center;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 60px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-  max-width: 900px;
-}
-.full-bg-image h2 { font-size: 50px; color: #1e3a8a; margin-bottom: 20px; }
-.full-bg-image p { font-size: 28px; font-weight: 700; color: #334155; }
     </style>
 </head>
 <body>
 
 <div id="presentation-area">
 
-<!-- Slide 1: Title_Slide -->
 <div class="slide-container" id="slide1">
     <div class="title-layout">
         <div style="display: inline-block; background-color: rgba(255,255,255,0.2); padding: 10px 30px; border-radius: 50px; color: white; font-weight: 700; font-size: 20px; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.4);">교회 단체 문화 행사</div>
@@ -305,7 +249,6 @@ body {
     </div>
 </div>
 
-<!-- Slide 2: Bleed_Image_Right (상영 안내) -->
 <div class="slide-container bleed-image-layout" id="slide2">
     <div class="content-container">
         <h2 class="slide-title">19일 단체관람 일정 안내</h2>
@@ -332,7 +275,6 @@ body {
     </div>
 </div>
 
-<!-- Slide 3: Styled_Bullet_Points (관람하실 성도님들 협조 안내) -->
 <div class="slide-container" id="slide3">
     <h2 class="slide-title">티켓 배부 및 관람 협조 안내</h2>
     <div class="content-area">
@@ -347,7 +289,6 @@ body {
     </div>
 </div>
 
-<!-- Slide 4: Tiled_Text_With_Icons (준비 및 당부 말씀) -->
 <div class="slide-container" id="slide4">
     <h2 class="slide-title">준비 및 기타 안내 사항</h2>
     <div class="content-area">
@@ -355,12 +296,12 @@ body {
             <div class="tile">
                 <div class="icon"><i class="fa-solid fa-temperature-arrow-down"></i></div>
                 <h3>에어컨 온도 대비</h3>
-                <p>영화관 실내 에어컨으로 인해 온도가 낮을 수 있습니다.<br><br>감기에 걸리지 않도록 덮을 수 있는 <strong>가벼운 겉옷</strong>을 꼭 챙겨와 주시기 바랍니다.</p>
+                <p>영화관 실내 에어컨으로 인해 온도가 낮을 수 있습니다. 감기에 걸리지 않도록 덮을 수 있는 <strong>가벼운 겉옷</strong>을 꼭 챙겨와 주시기 바랍니다.</p>
             </div>
             <div class="tile">
                 <div class="icon"><i class="fa-solid fa-car"></i></div>
                 <h3>차량 탑승 배려</h3>
-                <p>이동하는 과정에서도 안전하고 불편함이 없도록 서로 따뜻하게 살펴주시기 바랍니다.<br><br><span style="color:#1e3a8a; font-weight:700;">카풀이 필요하신 성도님께서는 박선홍 형제님께 문의해주세요.</span></p>
+                <p>이동하는 과정에서도 안전하고 불편함이 없도록 서로 따뜻하게 살펴주시기 바랍니다. <span style="color:#1e3a8a; font-weight:700;">카풀이 필요하신 성도님께서는 박선홍 형제님께 문의해주세요.</span></p>
             </div>
             <div class="tile">
                 <div class="icon"><i class="fa-solid fa-mug-hot"></i></div>
@@ -371,9 +312,8 @@ body {
     </div>
 </div>
 
-<!-- Slide 5: Tiled_Images (오시는 길 QR) -->
 <div class="slide-container" id="slide5">
-    <h2 class="slide-title">오시는 길 (스마트폰 길안내)</h2>
+    <h2 class="slide-title">오시는 길</h2>
     <div class="content-area">
         <div style="width: 100%; text-align: left; margin-bottom: 20px;">
             <p style="font-weight: 700; color: #475569;">스마트폰 카메라로 QR코드를 스캔하시거나 앱이름을 클릭하시면 지도 앱으로 연결됩니다.</p>
@@ -381,7 +321,6 @@ body {
         <div class="tiled-content">
             <div class="image-tile">
                 <div class="image-wrapper" style="border-radius: 16px;">
-                    <!-- 더 안정적인 QuickChart API로 변경 -->
                     <img src="https://quickchart.io/qr?size=300&margin=1&text=https%3A%2F%2Fmaps.apple.com%2Fplace%3Faddress%3D12113%2520%25EB%258C%2580%25ED%2595%259C%25EB%25AF%25BC%25EA%25B5%25AD%2520%25EA%25B2%25BD%25EA%25B8%25B0%25EB%258F%2584%2520%25EB%2582%25A8%25EC%2596%2591%25EC%25A3%25BC%25EC%258B%259C%2520%25EB%25B3%2584%25EB%2582%25B4%25EC%25A4%2591%25EC%2595%2599%25EB%25A1%259C%252010%2520%25EC%25A7%2580%25ED%2595%25982%25EC%25B8%25B5%26coordinate%3D37.644234%2C127.127223%26name%3D%25EB%25A1%25AF%25EB%258D%25B0%25EC%258B%259C%25EB%2584%25A4%25EB%25A7%2588%26place-id%3DID83DA85D60DC4765%26map%3Dexplore" alt="Apple 지도 QR">
                 </div>
                 <h3 style="font-size:24px;"><a href="https://maps.apple.com/place?address=12113%20%EB%8C%80%ED%95%9C%EB%AF%BC%EA%B5%AD%20%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EB%82%A8%EC%96%91%EC%A3%BC%EC%8B%9C%20%EB%B3%84%EB%82%B4%EC%A4%91%EC%95%99%EB%A1%9C%2010%20%EC%A7%80%ED%95%982%EC%B8%B5&coordinate=37.644234,127.127223&name=%EB%A1%AF%EB%8D%B0%EC%8B%9C%EB%84%A4%EB%A7%88&place-id=ID83DA85D60DC4765&map=explore" target="_blank" style="color: #000000; text-decoration: none;"><i class="fa-brands fa-apple"></i> Apple</a></h3>
@@ -400,7 +339,6 @@ body {
             </div>
         </div>
         
-        <!-- 주의 문구 추가 -->
         <div style="margin-top: 40px; width: 100%; text-align: center;">
             <p style="color: #ef4444; font-weight: 600; font-size: 20px;">(마우스 커서나 그림자가 QR 코드를 가리지 않도록 주의해주세요.)</p>
         </div>
@@ -409,13 +347,19 @@ body {
 
 </div>
 
-<div class="nav-hint" style="position: fixed; bottom: 20px; color: rgba(255,255,255,0.4); font-family: sans-serif; font-size: 14px; z-index: 1000; pointer-events: none;">
-    화면을 클릭하거나 키보드 방향키(←, →), 스페이스바를 눌러 슬라이드를 넘겨보세요.
+<div id="nav-hint" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.4); font-family: sans-serif; font-size: 14px; z-index: 1000; pointer-events: none; width: 100%; text-align: center; transition: opacity 0.5s ease;">
+    화면의 왼쪽/오른쪽을 터치/클릭/스와이프 또는 키보드 방향키(←, →), 스페이스바를 눌러 슬라이드를 넘겨보세요.
 </div>
 
 <script>
     const slides = document.querySelectorAll('.slide-container');
+    const navHint = document.getElementById('nav-hint');
     let currentSlide = 0;
+    
+    // 모바일 스와이프를 위한 변수
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isSwiping = false;
 
     function updateSlides() {
         slides.forEach((slide, index) => {
@@ -425,6 +369,13 @@ body {
                 slide.classList.remove('active');
             }
         });
+
+        // 첫 슬라이드에서만 안내 문구 표시
+        if (currentSlide === 0) {
+            navHint.style.opacity = '1';
+        } else {
+            navHint.style.opacity = '0';
+        }
     }
 
     function nextSlide() {
@@ -441,6 +392,7 @@ body {
         }
     }
 
+    // 키보드 조작
     window.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
             nextSlide();
@@ -449,22 +401,63 @@ body {
         }
     });
 
+    // 모바일 터치 시작 (스와이프 인식용)
+    window.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+        isSwiping = false; // 터치 시작시 스와이프 상태 초기화
+    }, {passive: true});
+
+    // 모바일 터치 종료 (스와이프 인식용)
+    window.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, {passive: true});
+
+    // 스와이프 거리 계산 함수
+    function handleSwipe() {
+        const swipeThreshold = 40; // 스와이프 인식 최소 픽셀 거리
+        if (touchStartX - touchEndX > swipeThreshold) {
+            // 왼쪽으로 밀었을 때 (다음 슬라이드)
+            isSwiping = true;
+            nextSlide();
+        } else if (touchEndX - touchStartX > swipeThreshold) {
+            // 오른쪽으로 밀었을 때 (이전 슬라이드)
+            isSwiping = true;
+            prevSlide();
+        }
+    }
+
+    // 마우스 클릭 및 모바일 화면 탭 처리
     window.addEventListener('click', (e) => {
-        if(!e.target.closest('a')) {
+        // 지도 링크를 클릭한 경우는 무시 (새 창으로 열림)
+        if(e.target.closest('a')) return;
+        
+        // 스와이프 동작이 방금 일어났다면 클릭 이벤트로 중복 넘어감 방지
+        if(isSwiping) {
+            isSwiping = false; 
+            return;
+        }
+        
+        // 화면 왼쪽 절반(50%) 클릭시 이전, 오른쪽 절반 클릭시 다음 슬라이드
+        if (e.clientX < window.innerWidth * 0.5) {
+            prevSlide();
+        } else {
             nextSlide();
         }
     });
 
     function resizePresentation() {
         const area = document.getElementById('presentation-area');
-        // 모바일에서도 PC처럼 상하좌우 최소 5%의 여백이 유지되도록 크기 비율(0.95) 조정
-        const scale = Math.min((window.innerWidth * 0.95) / 1280, (window.innerHeight * 0.95) / 720);
-        
-        // 브라우저 툴바 유무와 상관없이 항상 화면의 완벽한 정중앙에 정렬되도록 translate 적용
+        // 화면 여백을 보장하기 위해 95% 비율 사용 (높이는 안내문구를 위해 여백 확보)
+        const scale = Math.min((window.innerWidth * 0.95) / 1280, (window.innerHeight - 80) / 720);
+        // 중앙 정렬을 위한 translate 속성 추가
         area.style.transform = `translate(-50%, -50%) scale(${scale})`;
     }
 
+    // 창 크기가 변할 때마다 비율 재계산
     window.addEventListener('resize', resizePresentation);
+    
+    // 초기 실행
     resizePresentation();
     updateSlides();
 </script>
